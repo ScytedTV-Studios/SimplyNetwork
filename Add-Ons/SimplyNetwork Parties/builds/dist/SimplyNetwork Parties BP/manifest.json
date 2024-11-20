@@ -1,0 +1,63 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"SimplyNetwork powered by ScytedTV Studios"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.41"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "SimplyNetwork Parties",
+		"description": "The official SimplyNetwork Parties system.",
+		"min_engine_version": [
+			1,
+			21,
+			0
+		],
+		"uuid": "61cf8292-cfd7-4fd9-9179-cb627f2ae721",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "e29ba504-7f4c-475c-add3-4ccbe72d04fb",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"type": "script",
+			"language": "javascript",
+			"uuid": "5186bee5-aea7-45c4-a866-6738bf5d1a06",
+			"entry": "scripts/import.js",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"module_name": "@minecraft/server",
+			"version": "1.16.0-beta"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "1.4.0-beta"
+		}
+	]
+}

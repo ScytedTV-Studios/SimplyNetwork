@@ -1,7 +1,10 @@
 ---
 title: SimplyNetwork
 layout: simplynetwork
+type: help
 ---
+
+
 
 <div data-featurebase-embed></div>
 
@@ -11,12 +14,12 @@ layout: simplynetwork
     Featurebase('embed', {
         organization: 'simplynetwork',
 
-        basePath: '/docs',
+        basePath: '/development',
 
         theme: 'dark',
-        initialPage: 'Board',
-        hideMenu: false,
-        hideLogo: false,
+        initialPage: 'Help',
+        hideMenu: true,
+        hideLogo: true,
         filters: null,
         jwtToken: null,
         metadata: null,

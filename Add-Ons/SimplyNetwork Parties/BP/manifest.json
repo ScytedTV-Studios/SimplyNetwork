@@ -23,7 +23,7 @@
 		],
 		"uuid": "61cf8292-cfd7-4fd9-9179-cb627f2ae721",
 		"version": [
-			1,
+			3,
 			0,
 			0
 		]
@@ -33,7 +33,7 @@
 			"type": "data",
 			"uuid": "e29ba504-7f4c-475c-add3-4ccbe72d04fb",
 			"version": [
-				1,
+				3,
 				0,
 				0
 			]
@@ -44,13 +44,21 @@
 			"uuid": "5186bee5-aea7-45c4-a866-6738bf5d1a06",
 			"entry": "scripts/import.js",
 			"version": [
-				1,
+				3,
 				0,
 				0
 			]
 		}
 	],
 	"dependencies": [
+		{
+			"uuid": "b4b4a293-214e-41a4-86bc-d5fe7ac16d6a",
+			"version": [
+				3,
+				0,
+				0
+			]
+		},
 		{
 			"module_name": "@minecraft/server",
 			"version": "1.16.0-beta"

@@ -1,9 +1,9 @@
-import { world } from "@minecraft/server";
+	import { world } from "@minecraft/server";
 
 // Function to find the correct username with case sensitivity
 function findPlayerByName(inputName) {
     const players = Array.from(world.getPlayers());
-    return players.find((player) => player.nameTag.toLowerCase() === inputName.toLowerCase());
+    return players.find((player) => player.name.toLowerCase() === inputName.toLowerCase());
 }
 
 // Function to check if the player is in a party
@@ -16,7 +16,7 @@ function isPlayerInParty(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 const score = objective.getScore(participant);
                 return score > 0;
             }
@@ -38,12 +38,12 @@ function getPlayerPartyValue(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 return objective.getScore(participant);
             }
         }
     } catch (error) {
-        console.error(`Error accessing scoreboard for ${player.nameTag}: ${error}`);
+        console.error(`Error accessing scoreboard for ${player.name}: ${error}`);
     }
     return 0;
 }

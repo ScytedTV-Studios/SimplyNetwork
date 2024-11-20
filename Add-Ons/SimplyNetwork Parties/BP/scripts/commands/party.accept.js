@@ -1,9 +1,9 @@
-import { world } from "@minecraft/server";
+	import { world } from "@minecraft/server";
 
 // Function to find the correct username with case sensitivity
 function findPlayerByName(inputName) {
     const players = Array.from(world.getPlayers());
-    return players.find((player) => player.nameTag.toLowerCase() === inputName.toLowerCase());
+    return players.find((player) => player.name.toLowerCase() === inputName.toLowerCase());
 }
 
 // Function to get the party value of a player
@@ -16,12 +16,12 @@ function getPlayerPartyValue(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 return objective.getScore(participant);
             }
         }
     } catch (error) {
-        console.error(`Error accessing scoreboard for ${player.nameTag}: ${error}`);
+        console.error(`Error accessing scoreboard for ${player.name}: ${error}`);
     }
     return 0;
 }
@@ -33,7 +33,7 @@ function hasInviteTag(player, inviterName, inviterPartyValue) {
         const tags = player.getTags();
         return tags.includes(tag);
     } catch (error) {
-        console.error(`Error checking tags for player ${player.nameTag}: ${error}`);
+        console.error(`Error checking tags for player ${player.name}: ${error}`);
         return false;
     }
 }
@@ -60,11 +60,11 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
             const inviterPartyValue = getPlayerPartyValue(inviterPlayer);
 
             // Check if the sender has the correct invite tag
-            if (hasInviteTag(sender, inviterPlayer.nameTag, inviterPartyValue)) {
+            if (hasInviteTag(sender, inviterPlayer.name, inviterPartyValue)) {
                 // Join the party by setting the sender's party value to match the inviter's party value
-                sender.runCommandAsync(`scoreboard players operation @s party = ${inviterPlayer.nameTag} party`)
+                sender.runCommandAsync(`scoreboard players operation @s party = ${inviterPlayer.name} party`)
                     .then(() => sender.runCommandAsync(
-                        `tag @s remove ${inviterPlayer.nameTag}-${inviterPartyValue}`
+                        `tag @s remove ${inviterPlayer.name}-${inviterPartyValue}`
                     ))
                     .then(() => sender.runCommandAsync(
                         `tellraw @s {"rawtext":[{"text":"§aYou joined §e${inviterPlayer.nameTag}§a's party."}]}`

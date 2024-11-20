@@ -10,12 +10,12 @@ function getPlayerPartyValue(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 return objective.getScore(participant);
             }
         }
     } catch (error) {
-        console.error(`Error accessing scoreboard for ${player.nameTag}: ${error}`);
+        console.error(`Error accessing scoreboard for ${player.name}: ${error}`);
     }
     return 0;
 }
@@ -23,6 +23,10 @@ function getPlayerPartyValue(player) {
 // Subscribe to chat event to intercept messages
 world.beforeEvents.chatSend.subscribe((eventData) => {
     const player = eventData.sender;
+
+    if (eventData.message.startsWith("!party")) {
+        return;
+    };
 
     // Check if the player has the "partychat" tag
     if (player.hasTag("partychat")) {
@@ -33,7 +37,7 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
         const playerParty = getPlayerPartyValue(player);
 
         // Format the message
-        const formattedMessage = `<${player.nameTag}> §eto Party: §r${eventData.message}`;
+        const formattedMessage = `${player.nameTag} §eto Party§r: §r${eventData.message}`;
 
         // Send the message only to players in the same party
         for (const p of world.getPlayers()) {

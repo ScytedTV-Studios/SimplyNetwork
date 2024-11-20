@@ -3,7 +3,7 @@ import { world } from "@minecraft/server";
 // Function to find the correct username with case sensitivity
 function findPlayerByName(inputName) {
     const players = Array.from(world.getPlayers());
-    return players.find((player) => player.nameTag.toLowerCase() === inputName.toLowerCase());
+    return players.find((player) => player.name.toLowerCase() === inputName.toLowerCase());
 }
 
 // Function to get the party value of a player
@@ -16,12 +16,12 @@ function getPlayerPartyValue(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 return objective.getScore(participant);
             }
         }
     } catch (error) {
-        console.error(`Error accessing scoreboard for ${player.nameTag}: ${error}`);
+        console.error(`Error accessing scoreboard for ${player.name}: ${error}`);
     }
     return 0;
 }
@@ -66,7 +66,7 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
         }
 
         // Check if the sender is trying to transfer ownership to themselves
-        if (sender.nameTag === newOwnerPlayer.nameTag) {
+        if (sender.name === newOwnerPlayer.name) {
             sender.runCommandAsync(
                 `tellraw @s {"rawtext":[{"text":"§cYou are already the owner of the party."}]}`
             );

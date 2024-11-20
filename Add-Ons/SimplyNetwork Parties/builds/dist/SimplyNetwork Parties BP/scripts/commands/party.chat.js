@@ -10,7 +10,7 @@ function isPlayerInParty(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 const score = objective.getScore(participant);
                 return score > 0;
             }

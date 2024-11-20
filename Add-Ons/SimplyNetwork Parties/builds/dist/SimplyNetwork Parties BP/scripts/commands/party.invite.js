@@ -1,9 +1,9 @@
-import { world } from "@minecraft/server";
+	import { world } from "@minecraft/server";
 
 // Function to find the correct username with case sensitivity
 function findPlayerByName(inputName) {
     const players = Array.from(world.getPlayers());
-    return players.find((player) => player.nameTag.toLowerCase() === inputName.toLowerCase());
+    return players.find((player) => player.name.toLowerCase() === inputName.toLowerCase());
 }
 
 // Function to get the party value of a player
@@ -16,12 +16,12 @@ function getPlayerPartyValue(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 return objective.getScore(participant);
             }
         }
     } catch (error) {
-        console.error(`Error accessing scoreboard for ${player.nameTag}: ${error}`);
+        console.error(`Error accessing scoreboard for ${player.name}: ${error}`);
     }
     return 0;
 }
@@ -33,7 +33,7 @@ function hasInviteTag(player, inviterName, inviterPartyValue) {
         const tags = player.getTags();
         return tags.includes(tag);
     } catch (error) {
-        console.error(`Error checking tags for player ${player.nameTag}: ${error}`);
+        console.error(`Error checking tags for player ${player.name}: ${error}`);
         return false;
     }
 }
@@ -64,7 +64,7 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
         }
 
         // If the invited player is the sender, reject the invite with a message
-        if (invitedPlayer.nameTag.toLowerCase() === sender.nameTag.toLowerCase()) {
+        if (invitedPlayer.name.toLowerCase() === sender.name.toLowerCase()) {
             sender.runCommandAsync(
                 `tellraw @s {"rawtext":[{"text":"§cYou cannot invite yourself to a party."}]}`
             );
@@ -76,18 +76,18 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
 
         if (inviterPartyValue > 0) {
             // Check if the invited player already has the inviter's tag (indicating they've already been invited)
-            if (hasInviteTag(invitedPlayer, sender.nameTag, inviterPartyValue)) {
+            if (hasInviteTag(invitedPlayer, sender.name, inviterPartyValue)) {
                 // Inform the inviter that the player has already been invited
                 sender.runCommandAsync(
-                    `tellraw @s {"rawtext":[{"text":"§cYou have already invited ${invitedPlayer.nameTag} to the party."}]}`
+                    `tellraw @s {"rawtext":[{"text":"§cYou have already invited ${invitedPlayer.nameTag} §cto the party."}]}`
                 );
             } else {
                 // Tag the invited player with the inviter's party value
-                invitedPlayer.runCommandAsync(`tag @s add ${sender.nameTag}-${inviterPartyValue}`)
+                invitedPlayer.runCommandAsync(`tag @s add ${sender.name}-${inviterPartyValue}`)
                     .then(() => {
                         // Send an invitation message to the invited player
                         invitedPlayer.runCommandAsync(
-                            `tellraw @s {"rawtext":[{"text":"§a${sender.nameTag} §einvited you to a party. Type §a!party accept ${sender.nameTag} §eto join the party."}]}`
+                            `tellraw @s {"rawtext":[{"text":"§a${sender.nameTag} §einvited you to a party. Type §a!party accept ${sender.name} §eto join the party."}]}`
                         );
                     }).catch((error) => {
                         console.error(`Error tagging invited player: ${error}`);

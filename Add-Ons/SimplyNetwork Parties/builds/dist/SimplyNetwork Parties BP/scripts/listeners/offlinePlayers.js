@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+		import { world } from "@minecraft/server";
 
 // Function to get the party value of a player
 function getPlayerPartyValue(player) {
@@ -10,12 +10,12 @@ function getPlayerPartyValue(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 return objective.getScore(participant);
             }
         }
     } catch (error) {
-        console.error(`Error accessing scoreboard for ${player.nameTag}: ${error}`);
+        console.error(`Error accessing scoreboard for ${player.name}: ${error}`);
     }
     return 0;
 }
@@ -78,13 +78,6 @@ world.beforeEvents.playerLeave.subscribe((eventData) => {
         if (remainingPlayers.length > 0) {
             // Randomly pick a new party leader
             const newLeader = remainingPlayers[Math.floor(Math.random() * remainingPlayers.length)];
-
-            // Assign the "partyleader" tag to the new leader
-            newLeader.runCommandAsync('tag @s add partyleader')
-                .then(() => newLeader.runCommandAsync(
-                    `tellraw @s {"rawtext":[{"text":"§aYou have been made the new party leader."}]}`
-                ))
-                .catch((error) => console.error("Error assigning new leader:", error));
 
             // Inform everyone in the party about the new leader
             remainingPlayers.forEach(player => {

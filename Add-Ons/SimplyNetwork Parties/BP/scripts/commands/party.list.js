@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+	import { world } from "@minecraft/server";
 
 // Function to get the party value of a player
 function getPlayerPartyValue(player) {
@@ -10,12 +10,12 @@ function getPlayerPartyValue(player) {
 
         const participants = objective.getParticipants();
         for (const participant of participants) {
-            if (participant.displayName === player.nameTag) {
+            if (participant.displayName === player.name) {
                 return objective.getScore(participant);
             }
         }
     } catch (error) {
-        console.error(`Error accessing scoreboard for ${player.nameTag}: ${error}`);
+        console.error(`Error accessing scoreboard for ${player.name}: ${error}`);
     }
     return 0;
 }

@@ -12,9 +12,9 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
 
         // Send the help message to the sender
         sender.runCommandAsync(
-            `tellraw @s {"rawtext":[{"text":"§e--- Party Commands ---\n§a!party create §7- Create a new party\n§a!party leave §7- Leave your current party\n§a!party invite <player> §7- Invite a player to your party\n§a!party accept <player> §7- Accept a party invite\n§a!party transfer <player> §7- Transfer ownership to another player\n§a!party list §7- List all players in your party\n§a!party kick <player> §7- Kick a player from the party\n§a!party chat §7- Chat with party members\n§e--------------------"}]}`
+            `tellraw @s {"rawtext":[{"text":"§e--- Party Commands ---\n§a!party create §7- Create a new party\n§a!party leave §7- Leave your current party\n§a!party invite <player> §7- Invite a player to your party\n§a!party accept <player> §7- Accept a party invite\n§a!party transfer <player> §7- Transfer party ownership to another player\n§a!party list §7- List all players in your party\n§a!party kick <player> §7- Kick a player from the party\n§a!party chat §7- Chat with party members\n§e--------------------"}]}`
         ).then(() => {
-            console.log("Help message sent to", sender.nameTag);
+            console.log("Help message sent to", sender.name);
         }).catch((error) => {
             console.error("Error sending help message:", error);
         });

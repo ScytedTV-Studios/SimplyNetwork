@@ -1,7 +1,7 @@
 ---
 title: SimplyNetwork
 layout: simplynetwork
-type: updates
+type: docs
 ---
 
 
@@ -14,10 +14,10 @@ type: updates
     Featurebase('embed', {
         organization: 'simplynetwork',
 
-        basePath: '/updates',
+        basePath: '/docs',
 
         theme: 'dark',
-        initialPage: 'Board',
+        initialPage: 'Help',
         hideMenu: true,
         hideLogo: true,
         filters: null,

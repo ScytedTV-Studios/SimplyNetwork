@@ -1,10 +1,7 @@
 ---
 title: SimplyNetwork
 layout: simplynetwork
-type: updates
 ---
-
-
 
 <div data-featurebase-embed></div>
 
@@ -18,8 +15,8 @@ type: updates
 
         theme: 'dark',
         initialPage: 'Board',
-        hideMenu: true,
-        hideLogo: true,
+        hideMenu: false,
+        hideLogo: false,
         filters: null,
         jwtToken: null,
         metadata: null,

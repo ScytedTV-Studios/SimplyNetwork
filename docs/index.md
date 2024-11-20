@@ -11,7 +11,7 @@ layout: simplynetwork
     Featurebase('embed', {
         organization: 'simplynetwork',
 
-        basePath: '/feedback',
+        basePath: '/docs',
 
         theme: 'dark',
         initialPage: 'Board',

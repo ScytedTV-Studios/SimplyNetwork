@@ -1,0 +1,49 @@
+$formatVersion: 1
+#unknown
+projects/SimplyNetwork Parties/BP/pack_icon.png|1732119182
+projects/SimplyNetwork Parties/RP/pack_icon.png|1732119182
+#manifest
+projects/SimplyNetwork Parties/BP/manifest.json|1732119582
+#functionTick
+projects/SimplyNetwork Parties/BP/functions/tick.json|1731781834
+#gameTest
+projects/SimplyNetwork Parties/BP/scripts/import.js|1731883839
+projects/SimplyNetwork Parties/BP/scripts/commands/party.js|1732117821
+projects/SimplyNetwork Parties/BP/scripts/listeners/offlinePlayers.js|1732117829
+projects/SimplyNetwork Parties/BP/scripts/commands/party.create.js|1732117824
+projects/SimplyNetwork Parties/BP/scripts/commands/party.invite.js|1732117824
+projects/SimplyNetwork Parties/BP/scripts/commands/party.accept.js|1732117827
+projects/SimplyNetwork Parties/BP/scripts/commands/party.leave.js|1732117817
+projects/SimplyNetwork Parties/BP/scripts/commands/party.list.js|1732117816
+projects/SimplyNetwork Parties/BP/scripts/commands/party.kick.js|1732117818
+projects/SimplyNetwork Parties/BP/scripts/commands/party.transfer.js|1732117813
+projects/SimplyNetwork Parties/BP/scripts/listeners/partyChat.js|1732119454
+projects/SimplyNetwork Parties/BP/scripts/commands/party.chat.js|1732119314
+#lootTable
+projects/SimplyNetwork Parties/BP/loot_tables/empty.json|1731689051
+#entity
+projects/SimplyNetwork Parties/BP/entities/player.json|1731689051|{"identifier":["minecraft:player"],"event":["minecraft:gain_raid_omen","minecraft:clear_add_raid_omen","minecraft:trigger_raid","minecraft:remove_raid_trigger"],"eventReference":["minecraft:gain_raid_omen","minecraft:remove_raid_trigger","minecraft:clear_add_raid_omen"],"componentGroup":["minecraft:add_raid_omen","minecraft:clear_raid_omen_spell_effect","minecraft:raid_trigger"],"family":["player"],"lootTablePath":["projects/SimplyNetwork Parties/BP/loot_tables/empty.json"]}
+#splashes
+projects/SimplyNetwork Parties/RP/splashes.json|1731689051
+#langDef
+projects/SimplyNetwork Parties/RP/texts/languages.json|1731689050
+#clientBlock
+projects/SimplyNetwork Parties/RP/blocks.json|1731689050|{"identifier":[]}
+#biomesClient
+projects/SimplyNetwork Parties/RP/biomes_client.json|1731689051
+#clientManifest
+projects/SimplyNetwork Parties/RP/manifest.json|1732119570066|{"uuid":["b4b4a293-214e-41a4-86bc-d5fe7ac16d6a"]}
+#clientSound
+projects/SimplyNetwork Parties/RP/sounds.json|1731689051
+#clientLang
+projects/SimplyNetwork Parties/RP/texts/en_US.lang|1731689050|{"actionText":[]}
+#flipbookTexture
+projects/SimplyNetwork Parties/RP/textures/flipbook_textures.json|1731689051
+#itemTexture
+projects/SimplyNetwork Parties/RP/textures/item_texture.json|1731689050|{"texture":[]}
+#terrainTexture
+projects/SimplyNetwork Parties/RP/textures/terrain_texture.json|1731689051|{"texture":[]}
+#soundDefinition
+projects/SimplyNetwork Parties/RP/sounds/sound_definitions.json|1731689051|{"identifier":[]}
+#function
+projects/SimplyNetwork Parties/BP/functions/SimplyNetwork_Parties_setup.mcfunction|1731880945|{"entityTag":[],"functionPath":[],"scoreboardObjective":["party","partytotal"]}

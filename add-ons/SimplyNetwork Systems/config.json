@@ -1,0 +1,46 @@
+{
+	"type": "minecraftBedrock",
+	"name": "SimplyNetwork Systems",
+	"namespace": "SimplyNetwork",
+	"authors": [
+		"SimplyNetwork powered by ScytedTV Studios"
+	],
+	"targetVersion": "1.21.40",
+	"description": "SimplyNetwork Systems combines all of our systems in to one add-on pack so we don't have to have separate add-ons for each system.",
+	"experimentalGameplay": {
+		"creationOfCustomBiomes": false,
+		"upcomingCreatorFeatures": false,
+		"enableGameTestFramework": true,
+		"focusTargetCamera": false,
+		"dataDrivenJigsawStructures": false,
+		"aimAssist": false,
+		"educationEdition": false
+	},
+	"bdsProject": false,
+	"packs": {
+		"behaviorPack": "./BP",
+		"resourcePack": "./RP"
+	},
+	"worlds": [
+		"./worlds/*"
+	],
+	"compiler": {
+		"plugins": [
+			"generatorScripts",
+			"typeScript",
+			"entityIdentifierAlias",
+			"customEntityComponents",
+			"customItemComponents",
+			"customBlockComponents",
+			"customCommands",
+			"moLang",
+			"formatVersionCorrection",
+			[
+				"simpleRewrite",
+				{
+					"packName": "SimplyNetwork Systems"
+				}
+			]
+		]
+	}
+}

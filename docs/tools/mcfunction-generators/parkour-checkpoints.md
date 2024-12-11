@@ -123,14 +123,14 @@ layout: page
         result += `execute as @a[tag=parkourCheckpoint${number},scores={parkour_checkpoints=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number}\n`;
         result += `execute as @a[tag=parkourCheckpoint${number},scores={parkour_checkpoints=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${number}\n\n`;
 
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 2\n`;
+        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 1\n`;
         result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run particle minecraft:totem_particle ~ ~1 ~\n`;
         result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number} §8[§7+10xp§8]\n`;
         result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${number}\n`;
         result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run scoreboard players add @s parkour_level_xp 10\n`;
         result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run tag @s add parkourCheckpoint${number}\n\n`;
         
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 2\n`;
+        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 1\n`;
         result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run particle minecraft:totem_particle ~ ~1 ~\n`;
         result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number} §8[§7+5xp§8]\n`;
         result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${number}\n`;

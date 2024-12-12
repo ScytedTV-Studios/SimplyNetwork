@@ -1,0 +1,30 @@
+{
+	"resource_pack_name": "SimplyNetwork Systems",
+	"texture_name": "atlas.items",
+	"texture_data": {
+		"SimplyNetwork_cosmetics": {
+			"textures": "textures/items/cosmetics"
+		},
+		"SimplyNetwork_game_selector": {
+			"textures": "textures/items/game_selector"
+		},
+		"SimplyNetwork_social_menu": {
+			"textures": "textures/items/social_menu"
+		},
+		"SimplyNetwork_leaderboards": {
+			"textures": "textures/items/leaderboards"
+		},
+		"SimplyNetwork_checkpoint": {
+			"textures": "textures/items/checkpoint"
+		},
+		"SimplyNetwork_checkpoint_lock": {
+			"textures": "textures/items/checkpoint_lock"
+		},
+		"SimplyNetwork_prestige_parkour": {
+			"textures": "textures/items/prestige_parkour"
+		},
+		"SimplyNetwork_restart_parkour": {
+			"textures": "textures/items/restart_parkour"
+		}
+	}
+}

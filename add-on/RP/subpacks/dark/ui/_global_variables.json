@@ -1,0 +1,56 @@
+{
+    "$generic_button_text_color": [1, 1, 1],
+
+    "$light_button_default_text_color": [1, 1, 1],
+    "$light_button_hover_text_color": [1, 1, 1],
+    "$light_button_pressed_text_color": [1, 1, 1],
+    "$light_button_locked_text_color": [0.7, 0.7, 0.7],
+
+    "$light_toggle_default_text_color": [1, 1, 1],
+    "$light_toggle_hover_text_color": [1, 1, 1],
+    "$light_toggle_checked_default_text_color": [1, 1, 1],
+    "$light_toggle_checked_hover_text_color": [1, 1, 1],
+
+    "$dark_button_default_text_color": [1.0, 1.0, 1.0],
+    "$dark_button_hover_text_color": [1.0, 1.0, 1.0],
+    "$dark_button_pressed_text_color": [1.0, 1.0, 1.0],
+    "$dark_button_locked_text_color": [0.7, 0.7, 0.7],
+
+    "$dark_toggle_default_text_color": [1.0, 1.0, 1.0],
+    "$dark_toggle_hover_text_color": [1.0, 1.0, 1.0],
+    "$dark_toggle_checked_default_text_color": [1.0, 1.0, 1.0],
+    "$dark_toggle_checked_hover_text_color": [1.0, 1.0, 1.0],
+
+    "$tab_unchecked_text_color": [1, 1, 1],
+    "$tab_unchecked_hover_text_color": [1, 1, 1],
+    "$tab_unchecked_locked_text_color": [0.7, 0.7, 0.7],
+    "$tab_unchecked_locked_hover_text_color": [0.7, 0.7, 0.7],
+
+    "$tab_checked_text_color": [1.0, 1.0, 1.0],
+    "$tab_checked_hover_text_color": [1.0, 1.0, 1.0],
+    "$tab_checked_locked_text_color": [0.7, 0.7, 0.7],
+    "$tab_checked_locked_hover_text_color": [0.7, 0.7, 0.7],
+
+    "$title_text_color": [1, 1, 1],
+    "$pocket_title_text_color": [1, 1, 1],
+
+    "$light_glyph_default_color": [1, 1, 1],
+
+    "$tab_unchecked_glyph_color": [1, 1, 1],
+    "$tab_unchecked_hover_glyph_color": [1, 1, 1],
+    "$tab_unchecked_locked_glyph_color": [1, 1, 1],
+    "$tab_unchecked_locked_hover_glyph_color": [1, 1, 1],
+    "$tab_checked_glyph_color": [1, 1, 1],
+    "$tab_checked_hover_glyph_color": [1, 1, 1],
+    "$tab_checked_locked_glyph_color": [1, 1, 1],
+    "$tab_checked_locked_hover_glyph_color": [1, 1, 1],
+
+    "$tab_secondary_unchecked_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_unchecked_hover_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_unchecked_locked_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_unchecked_locked_hover_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_checked_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_checked_hover_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_checked_locked_text_color": [1.0, 1.0, 1.0],
+    "$tab_secondary_checked_locked_hover_text_color": [1.0, 1.0, 1.0]
+}

@@ -1,0 +1,32 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "simplynetwork:floating_text",
+			"is_spawnable": true,
+			"is_summonable": true,
+			"is_experimental": false
+		},
+		"component_groups": {},
+		"components": {
+			"minecraft:nameable": {
+				"always_show": true
+			},
+			"minecraft:movement": {
+				"value": 0.0
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"cause": "entity_attack",
+						"deals_damage": false
+					}
+				]
+			},
+			"minecraft:scale": {
+				"value": 0.0
+			}
+		},
+		"events": {}
+	}
+}

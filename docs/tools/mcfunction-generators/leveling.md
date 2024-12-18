@@ -124,7 +124,7 @@ layout: page
 
         result += `#Level ${level}\n`;
         result += `scoreboard players set "level${level}" ${required_scoreboard} ${xpRequired}\n\n`;
-        result += `execute as @a[scores={${level_scoreboard}=${levelMinusOne}}] if score @s ${xp_scoreboard} >= "level${level}" ${required_scoreboard} run tellraw @s {"rawtext":[{"text":"${level_type} Level +${level}\\n${message}"}]}\n`;
+        result += `execute as @a[scores={${level_scoreboard}=${levelMinusOne}}] if score @s ${xp_scoreboard} >= "level${level}" ${required_scoreboard} run tellraw @s {"rawtext":[{"text":"${level_type} Level ${level}\\n${message}"}]}\n`;
         result += `execute as @a[scores={${level_scoreboard}=${levelMinusOne}}] if score @s ${xp_scoreboard} >= "level${level}" ${required_scoreboard} run tag @s add displayLevel\n`;
         result += `execute as @a[scores={${level_scoreboard}=${levelMinusOne}}] if score @s ${xp_scoreboard} >= "level${level}" ${required_scoreboard} run scoreboard players set @s ${level_scoreboard} ${level}\n\n`;
         result += `scoreboard players operation @a[scores={${level_scoreboard}=${levelMinusOne}}] ${required_scoreboard} = "level${level}" ${required_scoreboard}\n\n`;

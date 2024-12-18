@@ -16,7 +16,7 @@
 		"aimAssist": false,
 		"educationEdition": false
 	},
-	"bdsProject": false,
+	"bdsProject": true,
 	"packs": {
 		"behaviorPack": "./BP",
 		"resourcePack": "./RP"

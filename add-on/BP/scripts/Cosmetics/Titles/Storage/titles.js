@@ -9,5 +9,9 @@ export const titleTags = {
     displayTitle7: "§fParkour Pro",
     displayTitle8: "§eParkour Master",
     displayTitle9: "§bParkour Champion",
-    displayTitle10: "§9Warden's Pit"
+    displayTitle10: "§9Warden's Pit",
+    displayTitle11: "§nCave Dweller",
+    displayTitle12: "§bThe Runner",
+    displayTitle13: "§uBeta Tester",
+    displayTitle14: "§dBug Squasher"
 };

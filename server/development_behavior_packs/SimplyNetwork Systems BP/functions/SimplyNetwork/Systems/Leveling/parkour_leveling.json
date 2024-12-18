@@ -1,0 +1,54 @@
+{
+    "level_settings": {
+        "level_scoreboard": "parkour_level",
+            "xp_scoreboard": "parkour_level_xp",
+                "required_scoreboard": "parkour_level_xp_required",
+                    "level_type": "§eParkour"
+    },
+    "levels": [
+        {
+            "level": 1,
+            "xp_required": 80,
+            "message": "You now have the §6Parkour Noob §etitle."
+        },
+        {
+            "level": 2,
+            "xp_required": 200
+        },
+        {
+            "level": 3,
+            "xp_required": 380
+        },
+        {
+            "level": 4,
+            "xp_required": 650,
+            "message": "You now have the §fParkour Pro §etitle."
+        },
+        {
+            "level": 5,
+            "xp_required": 1055
+        },
+        {
+            "level": 6,
+            "xp_required": 1663
+        },
+        {
+            "level": 7,
+            "xp_required": 2575,
+            "message": "You now have the §eParkour Master §etitle."
+        },
+        {
+            "level": 8,
+            "xp_required": 3943
+        },
+        {
+            "level": 9,
+            "xp_required": 5995
+        },
+        {
+            "level": 10,
+            "xp_required": 9073,
+            "message": "You now have the §bParkour Champion §etitle."
+        }
+    ]
+}

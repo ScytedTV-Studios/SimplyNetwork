@@ -50,5 +50,19 @@ function SimplyNetwork/Systems/Scoreboards/boards
 #Parkour
 function SimplyNetwork/Games/Parkour/checkpoints
 function SimplyNetwork/Games/Parkour/setup
+function SimplyNetwork/Games/Parkour/teleport_parkour_checkpoints
+function SimplyNetwork/Games/Parkour/transition
 
 execute as @r[dx=104,dy=178,dz=104,x=1000,y=54,z=1003] at @s positioned ~ ~ ~ run function SimplyNetwork/Games/Parkour/Fix/spiral1
+execute as @r[dx=104,dy=300,dz=104,x=1000,y=-64,z=2000] at @s positioned ~ ~ ~ run function SimplyNetwork/Games/Parkour/Fix/spiral2
+
+############
+## SERVER ##
+############
+
+function SimplyNetwork/Server/borders
+function SimplyNetwork/Server/floating_text
+function SimplyNetwork/Server/in_game
+function SimplyNetwork/Server/messages
+function SimplyNetwork/Server/teleport
+function SimplyNetwork/Server/world_edit

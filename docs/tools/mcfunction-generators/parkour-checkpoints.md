@@ -115,28 +115,50 @@ layout: page
     function generateCommands(data) {
       let result = '';
       data.forEach(entry => {
+        const id = entry.id;
+        const totalNumber = entry.totalNumber;
         const number = entry.number;
         const [x, y, z] = entry.coordinates.split(' ');
         const coords = `${x} ${y} ${z}`;
         result += `#Checkpoint ${number}\n`;
-        result += `execute as @a[tag=parkourCheckpoint${number},scores={parkour_checkpoints=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run playsound note.pling @s ^ ^1 ^1 1 2\n`;
-        result += `execute as @a[tag=parkourCheckpoint${number},scores={parkour_checkpoints=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number}\n`;
-        result += `execute as @a[tag=parkourCheckpoint${number},scores={parkour_checkpoints=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${number}\n\n`;
+        result += `execute as @a[tag=parkour${id}Checkpoint${number},scores={parkour_checkpoints_${id}=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run playsound note.pling @s ^ ^1 ^1 1 2\n`;
+        result += `execute as @a[tag=parkour${id}Checkpoint${number},scores={parkour_checkpoints_${id}=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number}\n`;
+        result += `execute as @a[tag=parkour${id}Checkpoint${number},scores={parkour_checkpoints_${id}=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints_${id} ${number}\n`;
+        result += `execute as @a[tag=parkour${id}Checkpoint${number},scores={parkour_checkpoints_${id}=!${number}}] at @s[x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${totalNumber}\n\n`;
 
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 1\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run particle minecraft:totem_particle ~ ~1 ~\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number} §8[§7+10xp§8]\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${number}\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run scoreboard players add @s parkour_level_xp 10\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=!hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run tag @s add parkourCheckpoint${number}\n\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 1\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run particle minecraft:totem_particle ~ ~1 ~\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number} §8[§7+10xp§8]\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints_${id} ${number}\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${totalNumber}\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players add @s parkour_level_xp 10\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run tag @s add parkour${id}Checkpoint${number}\n\n`;
         
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 1\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run particle minecraft:totem_particle ~ ~1 ~\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number} §8[§7+5xp§8]\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${number}\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run scoreboard players add @s parkour_level_xp 5\n`;
-        result += `execute as @a[tag=!parkourCheckpoint${number}] at @s[tag=hasRestartParkour,x=${x},y=${y},z=${z},dy=0] run tag @s add parkourCheckpoint${number}\n\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 1\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run particle minecraft:totem_particle ~ ~1 ~\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number} §8[§7+5xp§8]\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints_${id} ${number}\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${totalNumber}\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players add @s parkour_level_xp 5\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=!hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run tag @s add parkour${id}Checkpoint${number}\n\n`;
 
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 1\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run particle minecraft:totem_particle ~ ~1 ~\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number} §8[§7+13xp§8]\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints_${id} ${number}\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${totalNumber}\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players add @s parkour_level_xp 13\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=!hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run tag @s add parkour${id}Checkpoint${number}\n\n`;
+        
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run playsound random.toast @s ^ ^1 ^1 1 1\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run particle minecraft:totem_particle ~ ~1 ~\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run title @s actionbar §aCheckpoint #${number} §8[§7+8xp§8]\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints_${id} ${number}\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players set @s parkour_checkpoints ${totalNumber}\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run scoreboard players add @s parkour_level_xp 8\n`;
+        result += `execute as @a[tag=!parkour${id}Checkpoint${number}] as @s[tag=hasRolePlus] at @s[tag=hasRestartParkour${id},x=${x},y=${y},z=${z},dy=0] run tag @s add parkour${id}Checkpoint${number}\n\n`;
+
+        result += `scoreboard players set @a[tag=inGameParkour${id},scores={parkour_checkpoints_${id}=${number}}] parkour_checkpoints ${totalNumber}\n`;
         result += `spawnpoint @a[tag=inGameParkour,scores={parkour_checkpoints=${number}}] ${coords}\n\n`;
       });
       return result;

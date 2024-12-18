@@ -1,0 +1,24 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "simplynetwork:parkour_finish",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/parkour_finish"
+			},
+			"geometry": {
+				"default": "geometry.parkour_finish"
+			},
+			"render_controllers": [
+				"controller.render.parkour_finish"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

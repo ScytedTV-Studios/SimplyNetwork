@@ -1,0 +1,24 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "simplynetwork:npc_parkour",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/npc_parkour"
+			},
+			"geometry": {
+				"default": "geometry.npc_parkour"
+			},
+			"render_controllers": [
+				"controller.render.npc_parkour"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

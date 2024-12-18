@@ -1,0 +1,24 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "simplynetwork:parkour_start",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/parkour_start"
+			},
+			"geometry": {
+				"default": "geometry.parkour_start"
+			},
+			"render_controllers": [
+				"controller.render.parkour_start"
+			],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#FFFFFF"
+			}
+		}
+	}
+}

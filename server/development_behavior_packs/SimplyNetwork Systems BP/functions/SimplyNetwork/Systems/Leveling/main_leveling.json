@@ -1,0 +1,412 @@
+{
+    "level_settings": {
+        "level_scoreboard": "level",
+            "xp_scoreboard": "level_xp",
+                "required_scoreboard": "level_xp_required",
+                    "level_type": "§dServer"
+    },
+    "levels": [
+        {
+            "level": 1,
+            "xp_required": 100
+        },
+        {
+            "level": 2,
+            "xp_required": 350
+        },
+        {
+            "level": 3,
+            "xp_required": 975
+        },
+        {
+            "level": 4,
+            "xp_required": 2538
+        },
+        {
+            "level": 5,
+            "xp_required": 6446
+        },
+        {
+            "level": 6,
+            "xp_required": 16216
+        },
+        {
+            "level": 7,
+            "xp_required": 40641
+        },
+        {
+            "level": 8,
+            "xp_required": 101704
+        },
+        {
+            "level": 9,
+            "xp_required": 254362
+        },
+        {
+            "level": 10,
+            "xp_required": 416179
+        },
+        {
+            "level": 11,
+            "xp_required": 587705
+        },
+        {
+            "level": 12,
+            "xp_required": 769523
+        },
+        {
+            "level": 13,
+            "xp_required": 962250
+        },
+        {
+            "level": 14,
+            "xp_required": 1166541
+        },
+        {
+            "level": 15,
+            "xp_required": 1383089
+        },
+        {
+            "level": 16,
+            "xp_required": 1612630
+        },
+        {
+            "level": 17,
+            "xp_required": 1855943
+        },
+        {
+            "level": 18,
+            "xp_required": 2113855
+        },
+        {
+            "level": 19,
+            "xp_required": 2387242
+        },
+        {
+            "level": 20,
+            "xp_required": 2677032
+        },
+        {
+            "level": 21,
+            "xp_required": 2984209
+        },
+        {
+            "level": 22,
+            "xp_required": 3309817
+        },
+        {
+            "level": 23,
+            "xp_required": 3654961
+        },
+        {
+            "level": 24,
+            "xp_required": 4020814
+        },
+        {
+            "level": 25,
+            "xp_required": 4408618
+        },
+        {
+            "level": 26,
+            "xp_required": 4819690
+        },
+        {
+            "level": 27,
+            "xp_required": 5255426
+        },
+        {
+            "level": 28,
+            "xp_required": 5717306
+        },
+        {
+            "level": 29,
+            "xp_required": 6206899
+        },
+        {
+            "level": 30,
+            "xp_required": 6725868
+        },
+        {
+            "level": 31,
+            "xp_required": 7275975
+        },
+        {
+            "level": 32,
+            "xp_required": 7859088
+        },
+        {
+            "level": 33,
+            "xp_required": 8477188
+        },
+        {
+            "level": 34,
+            "xp_required": 9132374
+        },
+        {
+            "level": 35,
+            "xp_required": 9826871
+        },
+        {
+            "level": 36,
+            "xp_required": 10563038
+        },
+        {
+            "level": 37,
+            "xp_required": 11343375
+        },
+        {
+            "level": 38,
+            "xp_required": 12170532
+        },
+        {
+            "level": 39,
+            "xp_required": 13047318
+        },
+        {
+            "level": 40,
+            "xp_required": 13932872
+        },
+        {
+            "level": 41,
+            "xp_required": 14827282
+        },
+        {
+            "level": 42,
+            "xp_required": 15730636
+        },
+        {
+            "level": 43,
+            "xp_required": 16643024
+        },
+        {
+            "level": 44,
+            "xp_required": 17564536
+        },
+        {
+            "level": 45,
+            "xp_required": 18495263
+        },
+        {
+            "level": 46,
+            "xp_required": 19435297
+        },
+        {
+            "level": 47,
+            "xp_required": 20384731
+        },
+        {
+            "level": 48,
+            "xp_required": 21343659
+        },
+        {
+            "level": 49,
+            "xp_required": 22312176
+        },
+        {
+            "level": 50,
+            "xp_required": 23290378
+        },
+        {
+            "level": 51,
+            "xp_required": 24278362
+        },
+        {
+            "level": 52,
+            "xp_required": 25276226
+        },
+        {
+            "level": 53,
+            "xp_required": 26284069
+        },
+        {
+            "level": 54,
+            "xp_required": 27301990
+        },
+        {
+            "level": 55,
+            "xp_required": 28330090
+        },
+        {
+            "level": 56,
+            "xp_required": 29368471
+        },
+        {
+            "level": 57,
+            "xp_required": 30417236
+        },
+        {
+            "level": 58,
+            "xp_required": 31476489
+        },
+        {
+            "level": 59,
+            "xp_required": 32546335
+        },
+        {
+            "level": 60,
+            "xp_required": 33626879
+        },
+        {
+            "level": 61,
+            "xp_required": 34718228
+        },
+        {
+            "level": 62,
+            "xp_required": 35820490
+        },
+        {
+            "level": 63,
+            "xp_required": 36933775
+        },
+        {
+            "level": 64,
+            "xp_required": 38058193
+        },
+        {
+            "level": 65,
+            "xp_required": 39193855
+        },
+        {
+            "level": 66,
+            "xp_required": 40340874
+        },
+        {
+            "level": 67,
+            "xp_required": 41499363
+        },
+        {
+            "level": 68,
+            "xp_required": 42669437
+        },
+        {
+            "level": 69,
+            "xp_required": 43851212,
+            "message": "You now have the §d69 §bHAHA FUNNY §dtitle."
+        },
+        {
+            "level": 70,
+            "xp_required": 45044805
+        },
+        {
+            "level": 71,
+            "xp_required": 46250334
+        },
+        {
+            "level": 72,
+            "xp_required": 47467918
+        },
+        {
+            "level": 73,
+            "xp_required": 48697678
+        },
+        {
+            "level": 74,
+            "xp_required": 49939736
+        },
+        {
+            "level": 75,
+            "xp_required": 51194215
+        },
+        {
+            "level": 76,
+            "xp_required": 52461239
+        },
+        {
+            "level": 77,
+            "xp_required": 53740933
+        },
+        {
+            "level": 78,
+            "xp_required": 55033424
+        },
+        {
+            "level": 79,
+            "xp_required": 56338840
+        },
+        {
+            "level": 80,
+            "xp_required": 57657310
+        },
+        {
+            "level": 81,
+            "xp_required": 58988965
+        },
+        {
+            "level": 82,
+            "xp_required": 60333937
+        },
+        {
+            "level": 83,
+            "xp_required": 61692359
+        },
+        {
+            "level": 84,
+            "xp_required": 63064365
+        },
+        {
+            "level": 85,
+            "xp_required": 64450091
+        },
+        {
+            "level": 86,
+            "xp_required": 65849674
+        },
+        {
+            "level": 87,
+            "xp_required": 67263253
+        },
+        {
+            "level": 88,
+            "xp_required": 68690968
+        },
+        {
+            "level": 89,
+            "xp_required": 70132960
+        },
+        {
+            "level": 90,
+            "xp_required": 71589372
+        },
+        {
+            "level": 91,
+            "xp_required": 73060348
+        },
+        {
+            "level": 92,
+            "xp_required": 74546034
+        },
+        {
+            "level": 93,
+            "xp_required": 76046577
+        },
+        {
+            "level": 94,
+            "xp_required": 77562125
+        },
+        {
+            "level": 95,
+            "xp_required": 79092828
+        },
+        {
+            "level": 96,
+            "xp_required": 80638838
+        },
+        {
+            "level": 97,
+            "xp_required": 82200308
+        },
+        {
+            "level": 98,
+            "xp_required": 83777393
+        },
+        {
+            "level": 99,
+            "xp_required": 85370249
+        },
+        {
+            "level": 100,
+            "xp_required": 86979034,
+            "message": "You now have the §c100 §dtitle."
+        }
+    ]
+}

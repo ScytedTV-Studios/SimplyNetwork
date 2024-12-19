@@ -14,7 +14,7 @@
 		}
 	},
 	"header": {
-		"name": "SimplyNetwork Systems v2.0.59",
+		"name": "SimplyNetwork Systems v2.0.60",
 		"description": "SimplyNetwork Systems combines all of our systems in to one add-on pack so we don't have to have separate add-ons for each system.",
 		"min_engine_version": [
 			1,
@@ -25,7 +25,7 @@
 		"version": [
 			2,
 			0,
-			59
+			60
 		]
 	},
 	"modules": [
@@ -35,7 +35,7 @@
 			"version": [
 				2,
 				0,
-				59
+				60
 			]
 		},
 		{
@@ -46,7 +46,7 @@
 			"version": [
 				2,
 				0,
-				59
+				60
 			]
 		}
 	],
@@ -56,7 +56,7 @@
 			"version": [
 				2,
 				0,
-				59
+				60
 			]
 		},
 		{
@@ -70,6 +70,10 @@
 		{
 			"module_name": "@minecraft/server-ui",
 			"version": "1.4.0-beta"
+		},
+		{
+			"module_name": "@minecraft/server-net",
+			"version": "1.0.0-beta"
 		}
 	]
 }

@@ -1,40 +1,54 @@
 import { world, system } from "@minecraft/server";
+import { HttpRequest, HttpRequestMethod, http, HttpHeader } from "@minecraft/server-net";
 
 // Constants
 const LEADERBOARD_TAG = "textLevelLeaderboard";
-const LEVEL_OBJECTIVE = "level";
-const XP_OBJECTIVE = "level_xp";
+const SERVER_URL = "http://localhost:8000";
+const LEVEL_ENDPOINT = `${SERVER_URL}/scoreboards/level.json`;
+const XP_ENDPOINT = `${SERVER_URL}/scoreboards/level_xp.json`;
 
 // Temporary leaderboard storage
 let leaderboardData = [];
 
-// Function to get player score for a given objective
-function getScore(player, objectiveName) {
-    const objective = world.scoreboard.getObjective(objectiveName);
-    if (!objective) {
-        console.warn(`Objective "${objectiveName}" not found.`);
-        return 0;
-    }
-
+// Function to fetch data from a given URL
+async function fetchData(url) {
     try {
-        const score = objective.getScore(player);
-        return score;
-    } catch (e) {
-        console.warn(`Failed to get score for ${player.name} in objective "${objectiveName}": ${e}`);
-        return 0;
+        const request = new HttpRequest(url);
+        request.method = HttpRequestMethod.Get;
+        request.headers = [new HttpHeader("Content-Type", "application/json")];
+
+        const response = await http.request(request);
+        if (response.status === 200) {
+            return JSON.parse(response.body);
+        } else {
+            // console.warn(`Failed to fetch data from ${url}: Status ${response.status}`);
+            return {};
+        }
+    } catch (error) {
+        // console.error(`Error fetching data from ${url}: ${error}`);
+        return {};
     }
 }
 
 // Function to update leaderboard data
-function updateLeaderboardData() {
-    leaderboardData = [];  // Clear the previous leaderboard data
+async function updateLeaderboardData() {
+    // Fetch level and XP data from the server
+    const levelData = await fetchData(LEVEL_ENDPOINT);
+    const xpData = await fetchData(XP_ENDPOINT);
 
-    // Loop through all players and fetch their data
-    world.getPlayers().forEach(player => {
-        const level = getScore(player, LEVEL_OBJECTIVE);
-        const xp = getScore(player, XP_OBJECTIVE);
-        leaderboardData.push({ name: player.name, level, xp });
-    });
+    // Clear the previous leaderboard data
+    leaderboardData = [];
+
+    // Combine the data based on player names
+    for (const playerName in levelData) {
+        if (xpData[playerName] !== undefined) {
+            leaderboardData.push({
+                name: playerName,
+                level: levelData[playerName],
+                xp: xpData[playerName],
+            });
+        }
+    }
 
     // Sort players by level, then by XP
     leaderboardData.sort((a, b) => {
@@ -47,7 +61,7 @@ function updateLeaderboardData() {
 
 // Function to generate the leaderboard text
 function generateLeaderboardText() {
-    let text = "§l§eServer Leaderboard§r\n";
+    let text = "§l§dServer Leaderboard§r\n";
     if (leaderboardData.length === 0) {
         text += "§cNo data available.§r";
         return text;
@@ -72,13 +86,13 @@ function updateLeaderboard() {
 }
 
 // Function to periodically update leaderboard
-function updateLeaderboardPeriodically() {
-    // Update the leaderboard data based on players' current scores
-    updateLeaderboardData();
+async function updateLeaderboardPeriodically() {
+    // Update the leaderboard data based on fetched scores
+    await updateLeaderboardData();
 
     // Update the leaderboard display
     updateLeaderboard();
 }
 
-// Run the update function every 5 seconds (100 ticks)
-system.runInterval(updateLeaderboardPeriodically, 0);
+// Run the update function every 1 second (20 ticks)
+system.runInterval(updateLeaderboardPeriodically, 20);

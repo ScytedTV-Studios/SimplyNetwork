@@ -13,5 +13,6 @@ export const titleTags = {
     displayTitle11: "§nCave Dweller",
     displayTitle12: "§bThe Runner",
     displayTitle13: "§uBeta Tester",
-    displayTitle14: "§dBug Squasher"
+    displayTitle14: "§dBug Squasher",
+    displayTitle15: "§cRound §qAnd §uRound"
 };

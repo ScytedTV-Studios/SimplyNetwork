@@ -13,7 +13,8 @@ kill @e[type=item,name="Potato",dx=104,dy=178,dz=104,x=1000,y=54,z=1003]
 kill @e[type=item,name="Carrot",dx=104,dy=178,dz=104,x=1000,y=54,z=1003]
 execute as @a at @s[x=1031,y=97,z=1097,dy=1] run effect @s levitation 3 4 true
 execute as @a[dx=104,dy=178,dz=104,x=1000,y=54,z=1003] run execute as @s at @s positioned ~ ~ ~ if block ~ ~ ~ lava run tag @s add teleportParkour1CheckpointNow
-fill 1090 232 1096 1011 232 1017 water replace ice
+execute as @a[x=950,y=-104,z=950,dx=200,dy=150,dz=200] run execute as @s at @s positioned ~ ~ ~ run tellraw @s {"rawtext":[{"text":"§7Teleported back to last Checkpoint."}]}
+execute as @a[x=950,y=-104,z=950,dx=200,dy=150,dz=200] run execute as @s at @s positioned ~ ~ ~ run tag @s add teleportParkour1CheckpointNow
 fill 1040 72 1103 1043 72 1104 farmland ["moisturized_amount"=1]
 fill 1040 73 1103 1043 73 1104 wheat ["growth"=7] replace air
 fill 1042 72 1102 1041 72 1102 farmland ["moisturized_amount"=1]

@@ -8,7 +8,10 @@ scoreboard players operation total total_players += @a teleport_spawn
 
 #FROM HUB
 
-tag @a[x=18,y=2,z=0,dy=0] add teleportParkourCheckpoint
+# tag @a[x=18,y=2,z=0,dy=0] add teleportParkourCheckpoint
+effect @a[x=18,y=2,z=0,dy=1] invisibility 1 1 true
+title @a[x=18,y=2,z=0,dy=1] actionbar §7You are hidden §8[Hidden Zone]
+
 
 #Hub
 scoreboard objectives add teleport_spawn dummy

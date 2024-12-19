@@ -5,8 +5,36 @@ world.afterEvents.itemUse.subscribe((event) => {
 
     if (itemStack.typeId === "simplynetwork:restart_parkour") {
 
-        source.addTag("parkourRestart");
+        if (source.hasTag("inGameParkour1")) {
 
-        source.sendMessage("§aYou have been returned to the beginning!\n§6Checkpoints will give less XP than before.");
+            if (!source.hasTag("hasRestartParkour1")) {
+
+                source.addTag("parkour1Restart");
+
+                source.sendMessage("§aYou have been returned to the beginning!\n§6Checkpoints will give less XP than before.");
+
+            } else if (source.hasTag("hasRestartParkour1")) {
+
+                source.addTag("parkour1Restart");
+
+                source.sendMessage("§aYou have been returned to the beginning!");
+
+            }
+        } else if (source.hasTag("inGameParkour2")) {
+
+            if (!source.hasTag("hasRestartParkour2")) {
+
+                source.addTag("parkour2Restart");
+
+                source.sendMessage("§aYou have been returned to the beginning!\n§6Checkpoints will give less XP than before.");
+
+            } else if (source.hasTag("hasRestartParkour2")) {
+
+                source.addTag("parkour2Restart");
+
+                source.sendMessage("§aYou have been returned to the beginning!");
+
+            }
+        }
     }
 });

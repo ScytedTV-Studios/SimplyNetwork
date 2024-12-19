@@ -18,6 +18,7 @@ system.runInterval(() => {
 
         const playersInParkour = world.getDimension("overworld").getEntities({ type: "minecraft:player", tags: ["inGameParkour"] }).length;
 
-        entity.nameTag = `§l§6NEW MAP§r`;
+        // entity.nameTag = `§l§6NEW MAP: §sSpiral 2`;
+        entity.nameTag = ``;
     }
 }, 20);

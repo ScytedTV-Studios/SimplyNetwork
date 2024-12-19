@@ -26,10 +26,11 @@ execute as @a at @s[x=1031,y=97,z=1097,dy=1] run effect @s levitation 3 4 true
 execute as @a[dx=104,dy=178,dz=104,x=1000,y=54,z=1003] run execute as @s at @s positioned ~ ~ ~ if block ~ ~ ~ lava run tag @s add teleportParkour1CheckpointNow
 
 #Void
-# execute as @a[dx=104,dy=-20,dz=104,x=1000,y=-55,z=1003] run execute as @s at @s positioned ~ ~ ~ run tag @s add teleportParkour1CheckpointNow
+execute as @a[x=950,y=-104,z=950,dx=200,dy=150,dz=200] run execute as @s at @s positioned ~ ~ ~ run tellraw @s {"rawtext":[{"text":"§7Teleported back to last Checkpoint."}]}
+execute as @a[x=950,y=-104,z=950,dx=200,dy=150,dz=200] run execute as @s at @s positioned ~ ~ ~ run tag @s add teleportParkour1CheckpointNow
 
 #Ice to Water
-fill 1090 232 1096 1011 232 1017 water replace ice
+# fill 1090 232 1096 1011 232 1017 water replace ice
 
 ##############
 ## FARMLAND ##

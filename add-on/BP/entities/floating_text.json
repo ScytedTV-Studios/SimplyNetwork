@@ -7,7 +7,13 @@
 			"is_summonable": true,
 			"is_experimental": false
 		},
-		"component_groups": {},
+		"component_groups": {
+			"simplynetwork:interacted": {
+				"minecraft:scale": {
+					"value": 2
+				}
+			}
+		},
 		"components": {
 			"minecraft:nameable": {
 				"always_show": true
@@ -25,8 +31,33 @@
 			},
 			"minecraft:scale": {
 				"value": 0.0
+			},
+			"minecraft:interact": {
+				"interactions": [
+					{
+						"on_interact": {
+							"filters": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "player"
+								}
+							],
+							"target": "self",
+							"event": "simplynetwork:on_interact"
+						}
+					}
+				]
 			}
 		},
-		"events": {}
+		"events": {
+			"simplynetwork:on_interact": {
+				"add": {
+					"component_groups": [
+						"simplynetwork:interacted"
+					]
+				}
+			}
+		}
 	}
 }

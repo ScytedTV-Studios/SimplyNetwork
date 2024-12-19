@@ -58,8 +58,14 @@ import './Server/Entities/npcParkour';
 
 import './Server/Menus/comingSoon';
 import './Server/Menus/gameSelect';
+import './Server/Menus/leaderboards';
+
+import './Server/Net/discord'
+import './Server/Net/saveScoreboards'
+import './Server/Net/saveTags'
 
 import './Server/Leaderboards/parkourLevel';
 import './Server/Leaderboards/serverLevel';
 
+import './Server/FloatingText/discord';
 import './Server/FloatingText/parkourNpc';

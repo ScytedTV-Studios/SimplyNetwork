@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+import { world, system } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
 
 // Function to show the cosmetics menu

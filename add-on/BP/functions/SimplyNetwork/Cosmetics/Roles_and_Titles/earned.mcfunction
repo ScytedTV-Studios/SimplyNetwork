@@ -48,3 +48,7 @@ execute as @a[x=-46,y=30,z=-1,dx=0,dy=2,dz=2] at @s run tag @s[tag=!hasTitle12] 
 #Beta Tester
 tag @a[scores={level=1..}] add hasTitle13
 tag @a[scores={level=..0}] remove hasTitle13
+
+#Finished Parkour Spiral 1
+tag @a[tag=hasRestartParkour1] add hasTitle15
+tag @a[tag=!hasRestartParkour1] remove hasTitle15

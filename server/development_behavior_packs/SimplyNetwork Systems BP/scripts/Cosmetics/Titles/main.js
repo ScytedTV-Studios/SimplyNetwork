@@ -79,6 +79,6 @@ world.beforeEvents.chatSend.subscribe((event) => {
     // Send the custom formatted message to all players
     world.getPlayers().forEach((recipient) => {
         recipient.sendMessage(eventMessage);
-        console.log(eventMessageConsole);
     });
+    console.log(eventMessageConsole);
 });

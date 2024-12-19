@@ -4,7 +4,8 @@ scoreboard players remove @a[scores={teleport_timer=1..}] teleport_timer 1
 scoreboard objectives add total_players dummy
 scoreboard players set total total_players 0
 scoreboard players operation total total_players += @a teleport_spawn
-tag @a[x=18,y=2,z=0,dy=0] add teleportParkourCheckpoint
+effect @a[x=18,y=2,z=0,dy=1] invisibility 1 1 true
+title @a[x=18,y=2,z=0,dy=1] actionbar §7You are hidden §8[Hidden Zone]
 scoreboard objectives add teleport_spawn dummy
 scoreboard players add @a teleport_spawn 0
 tp @a[scores={teleport_spawn=0}] 0 0 0 facing 1 0 0

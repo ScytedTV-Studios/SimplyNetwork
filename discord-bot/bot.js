@@ -1,5 +1,6 @@
 require("dotenv").config();
 const fs = require("fs");
+const fsExtra = require("fs-extra");
 const { Client, GatewayIntentBits, REST, Routes, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, EmbedBuilder } = require("discord.js");
 const { spawn } = require("child_process");
 const path = require("path");
@@ -702,5 +703,26 @@ const updateRoles = async () => {
 
 // Check roles and nicknames every 5 seconds
 setInterval(updateRoles, 5000);
+
+// Function to create a timestamped backup
+async function createBackup() {
+    const sourceDir = 'E:\\Minecraft Dev\\SimplyNetwork\\Development\\server\\worlds\\world';
+const backupDir = 'E:\\Minecraft Dev\\SimplyNetwork\\Development\\server\\worlds\\backup';
+    try {
+        // Generate the timestamp in the format YYYY-MM-DD_HH-MM-SS
+        const timestamp = new Date().toISOString().replace(/[:T]/g, '-').split('.')[0];
+        const backupFolderName = `world ${timestamp}`;
+        const backupPath = path.join(backupDir, backupFolderName);
+
+        // Copy the source directory to the backup path
+        await fsExtra.copy(sourceDir, backupPath);
+        console.log(`Backup created successfully at ${backupPath}`);
+    } catch (err) {
+        console.error('Error while creating backup:', err);
+    }
+}
+
+// Run the backup function when the bot starts
+createBackup();
 
 client.login(TOKEN);

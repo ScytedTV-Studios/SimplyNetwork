@@ -32,3 +32,4 @@ function SimplyNetwork/Server/in_game
 function SimplyNetwork/Server/messages
 function SimplyNetwork/Server/teleport
 function SimplyNetwork/Server/world_edit
+function SimplyNetwork/Server/Corruption/12_19_2024

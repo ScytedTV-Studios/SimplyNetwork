@@ -1,5 +1,5 @@
 import { world } from "@minecraft/server";
-import { ActionFormData } from "@minecraft/server-ui";
+import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
 import { roleTags } from "./Storage/roles"; // Import roles (if needed)
 import { titleTags } from "./Storage/titles"; // Import titles
 
@@ -39,30 +39,73 @@ function rolesForm(Player) {
     // Array to keep track of buttons and roles
     const roleButtons = [];
 
+    // Find the currently active role tag
+    const currentTags = Player.getTags();
+    const currentRoleTag = currentTags.find((tag) => tag.startsWith("displayRole"));
+
+    // Add the "" button for the "displayRoleMember" tag manually
+    let memberRoleDisplay = "";
+    if (currentRoleTag === "displayRoleMember") {
+        memberRoleDisplay = `§l§a>§r ${memberRoleDisplay} §l§a<`;
+    }
+    rolesForm.button(memberRoleDisplay);
+    roleButtons.push({ roleTag: "displayRoleMember", roleDisplay: memberRoleDisplay });
+
     // Iterate over each role in the roleTags object
     for (const [roleTag, roleDisplay] of Object.entries(roleTags)) {
         const hasRoleTag = `hasRole${roleTag.replace("displayRole", "")}`;
+        let displayName = roleDisplay;
 
         // Check if the player has the corresponding "hasRole" tag
         if (Player.hasTag(hasRoleTag)) {
+            // Add indicators if this role is currently active
+            if (currentRoleTag === roleTag) {
+                displayName = `§l§a>§r ${displayName} §l§a<`;
+            }
+
             // Add a button with the role's display name and track the roleTag
-            rolesForm.button(roleDisplay);
-            roleButtons.push({ roleTag, roleDisplay });
+            rolesForm.button(displayName);
+            roleButtons.push({ roleTag, roleDisplay: displayName });
         }
     }
 
     // Add a "Back" button
     rolesForm.button("Back");
 
+    // Show the form
     rolesForm.show(Player).then((response) => {
         const selectionIndex = response.selection;
 
-        // If the selection is within the roleButtons array range
-        if (selectionIndex >= 0 && selectionIndex < roleButtons.length) {
+        // If "" is selected (index 0)
+        if (selectionIndex === 0) {
+            const selectedDisplayTag = "displayRoleMember";
+
+            // Do nothing if the player already has the "displayRoleMember" tag
+            if (Player.hasTag(selectedDisplayTag)) {
+                return;
+            }
+
+            const displayMessageEnabled = " §aEnabled.";
+
+            // Remove any existing "displayRole" tags
+            for (const tag of currentTags) {
+                if (tag.startsWith("displayRole")) {
+                    Player.runCommandAsync(`tag @s remove ${tag}`);
+                }
+            }
+
+            // Add the "displayRoleMember" tag
+            Player.runCommandAsync(`tag @s add ${selectedDisplayTag}`);
+
+            // Send the enable message
+            Player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"§l${displayMessageEnabled}"}]}`);
+        }
+        // If another role is selected
+        else if (selectionIndex > 0 && selectionIndex <= roleButtons.length - 1) {
             const selectedRole = roleButtons[selectionIndex];
             const selectedDisplayTag = `displayRole${selectedRole.roleTag.replace("displayRole", "")}`;
-            const displayMessageEnabled = `${selectedRole.roleDisplay} §aEnabled.`;
-            const displayMessageDisabled = `${selectedRole.roleDisplay} §cDisabled.`;
+            const displayMessageEnabled = `${selectedRole.roleDisplay.replace(/§l§a>\§r | §l§a</g, "")} §aEnabled.`;
+            const displayMessageDisabled = `${selectedRole.roleDisplay.replace(/§l§a>\§r | §l§a</g, "")} §cDisabled.`;
 
             // Check if the player already has the selected display role
             if (Player.hasTag(selectedDisplayTag)) {
@@ -73,7 +116,6 @@ function rolesForm(Player) {
                 Player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"§l${displayMessageDisabled}"}]}`);
             } else {
                 // Remove any existing "displayRole" tags
-                const currentTags = Player.getTags();
                 for (const tag of currentTags) {
                     if (tag.startsWith("displayRole")) {
                         Player.runCommandAsync(`tag @s remove ${tag}`);
@@ -86,8 +128,9 @@ function rolesForm(Player) {
                 // Send the enable message
                 Player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"§l${displayMessageEnabled}"}]}`);
             }
-        } else if (selectionIndex === roleButtons.length) {
-            // If "Back" is selected
+        }
+        // If "Back" is selected
+        else if (selectionIndex === roleButtons.length) {
             cosmeticsForm(Player);
         }
     });
@@ -101,16 +144,39 @@ function titlesForm(Player) {
     // Array to keep track of buttons and titles
     const titleButtons = [];
 
+    // Find the currently active title tag
+    const currentTags = Player.getTags();
+    const currentTitleTag = currentTags.find((tag) => tag.startsWith("displayTitle"));
+
     // Iterate over each title in the titleTags object
     for (const [titleTag, titleDisplay] of Object.entries(titleTags)) {
         const hasTitleTag = `hasTitle${titleTag.replace("displayTitle", "")}`;
+        let displayName = titleDisplay;
 
         // Check if the player has the corresponding "hasTitle" tag
         if (Player.hasTag(hasTitleTag)) {
+            // If this title is currently active, add indicators
+            if (currentTitleTag === titleTag) {
+                displayName = `§l§a>§r ${displayName} §l§a<`;
+            }
+
             // Add a button with the title's display name and track the titleTag
-            titlesForm.button(titleDisplay);
-            titleButtons.push({ titleTag, titleDisplay });
+            titleButtons.push({ titleTag, titleDisplay: displayName });
         }
+    }
+
+    // Sort titleButtons alphabetically by sanitized titleDisplay (ignoring § codes)
+    titleButtons.sort((a, b) => {
+        const sanitize = (text) => text.replace(/§./g, ""); // Remove all § codes
+        return sanitize(a.titleDisplay).localeCompare(sanitize(b.titleDisplay));
+    });
+
+    // Add a "Search Titles" button at the top
+    titlesForm.button("Search Titles");
+
+    // Add sorted buttons to the form
+    for (const { titleDisplay } of titleButtons) {
+        titlesForm.button(titleDisplay);
     }
 
     // If the player doesn't have any titles, append the message
@@ -126,38 +192,104 @@ function titlesForm(Player) {
     titlesForm.show(Player).then((response) => {
         const selectionIndex = response.selection;
 
-        // If the selection is within the titleButtons array range
-        if (selectionIndex >= 0 && selectionIndex < titleButtons.length) {
-            const selectedTitle = titleButtons[selectionIndex];
+        // If "Search Titles" is selected
+        if (selectionIndex === 0) {
+            searchTitlesForm(Player, titleButtons);
+        }
+        // If a title is selected
+        else if (selectionIndex > 0 && selectionIndex <= titleButtons.length) {
+            const selectedTitle = titleButtons[selectionIndex - 1];
             const selectedDisplayTag = `displayTitle${selectedTitle.titleTag.replace("displayTitle", "")}`;
-            const displayMessageEnabled = `${selectedTitle.titleDisplay} §aEnabled.`;
-            const displayMessageDisabled = `${selectedTitle.titleDisplay} §cDisabled.`;
+            const displayMessageEnabled = `${selectedTitle.titleDisplay.replace(/§l§a>\§r | §l§a</g, "")} §aEnabled.`;
+            const displayMessageDisabled = `${selectedTitle.titleDisplay.replace(/§l§a>\§r | §l§a</g, "")} §cDisabled.`;
 
             // Check if the player already has the selected display title
             if (Player.hasTag(selectedDisplayTag)) {
-                // Remove the display title tag
                 Player.runCommandAsync(`tag @s remove ${selectedDisplayTag}`);
-
-                // Send the disable message
                 Player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"§l${displayMessageDisabled}"}]}`);
             } else {
-                // Remove any existing "displayTitle" tags
+                for (const tag of currentTags) {
+                    if (tag.startsWith("displayTitle")) {
+                        Player.runCommandAsync(`tag @s remove ${tag}`);
+                    }
+                }
+                Player.runCommandAsync(`tag @s add ${selectedDisplayTag}`);
+                Player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"§l${displayMessageEnabled}"}]}`);
+            }
+        }
+        // If "Back" is selected
+        else if (selectionIndex === titleButtons.length + 1) {
+            cosmeticsForm(Player);
+        }
+    });
+}
+
+// Function to show the search form and filter results
+function searchTitlesForm(Player, titleButtons) {
+    const searchForm = new ModalFormData();
+    searchForm.title("§l§dCosmetics");
+    searchForm.textField("Enter a keyword to search for titles:", "e.g., Noob");
+
+    searchForm.show(Player).then((response) => {
+        if (response.canceled) {
+            titlesForm(Player);
+            return;
+        }
+
+        const query = response.formValues[0]?.toLowerCase();
+        if (!query) {
+            titlesForm(Player);
+            return;
+        }
+
+        const filteredButtons = titleButtons.filter(({ titleDisplay }) =>
+            titleDisplay.replace(/§./g, "").toLowerCase().includes(query)
+        );
+
+        showFilteredTitles(Player, filteredButtons);
+    });
+}
+
+// Function to show filtered titles
+function showFilteredTitles(Player, filteredButtons) {
+    const filteredForm = new ActionFormData();
+    filteredForm.title("§l§dCosmetics");
+
+    if (filteredButtons.length === 0) {
+        filteredForm.body("No titles match your search query.");
+    } else {
+        filteredForm.body("Select a title from the filtered list below:");
+        for (const { titleDisplay } of filteredButtons) {
+            filteredForm.button(titleDisplay);
+        }
+    }
+
+    filteredForm.button("Back");
+
+    filteredForm.show(Player).then((response) => {
+        const selectionIndex = response.selection;
+
+        if (selectionIndex >= 0 && selectionIndex < filteredButtons.length) {
+            const selectedTitle = filteredButtons[selectionIndex];
+            const selectedDisplayTag = `displayTitle${selectedTitle.titleTag.replace("displayTitle", "")}`;
+            const displayMessageEnabled = `${selectedTitle.titleDisplay.replace(/§l§a>\§r | §l§a</g, "")} §aEnabled.`;
+            const displayMessageDisabled = `${selectedTitle.titleDisplay.replace(/§l§a>\§r | §l§a</g, "")} §cDisabled.`;
+
+            if (Player.hasTag(selectedDisplayTag)) {
+                Player.runCommandAsync(`tag @s remove ${selectedDisplayTag}`);
+                Player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"§l${displayMessageDisabled}"}]}`);
+            } else {
                 const currentTags = Player.getTags();
                 for (const tag of currentTags) {
                     if (tag.startsWith("displayTitle")) {
                         Player.runCommandAsync(`tag @s remove ${tag}`);
                     }
                 }
-
-                // Add the selected display title tag
                 Player.runCommandAsync(`tag @s add ${selectedDisplayTag}`);
-
-                // Send the enable message
                 Player.runCommandAsync(`tellraw @s {"rawtext":[{"text":"§l${displayMessageEnabled}"}]}`);
             }
-        } else if (selectionIndex === titleButtons.length) {
-            // If "Back" is selected
-            cosmeticsForm(Player);
+        } else if (selectionIndex === filteredButtons.length) {
+            titlesForm(Player);
         }
     });
 }

@@ -1,0 +1,1 @@
+scoreboard players add reset reset_floating_text_timer 100

@@ -17,6 +17,17 @@ inputpermission set @a[tag=teleportHub,scores={teleport_timer=15}] movement enab
 gamemode a @a[tag=teleportHub,scores={teleport_timer=30}]
 tp @a[tag=teleportHub,scores={teleport_timer=30}] 0 0 0 facing 1 0 0
 tag @a[tag=teleportHub,scores={teleport_timer=1}] remove teleportHub
+scoreboard objectives add teleport_spawn dummy
+scoreboard players add @a teleport_spawn 0
+tp @a[scores={teleport_spawn=0}] 2099 -55 2099 facing 2100 -55 2099
+scoreboard players set @a teleport_spawn 1
+scoreboard players set @a[tag=teleportBetaHubHalloween,scores={teleport_timer=0}] teleport_timer 80
+camera @a[tag=teleportBetaHubHalloween,scores={teleport_timer=70}] fade time 0.2 3 0.2
+inputpermission set @a[tag=teleportBetaHubHalloween,scores={teleport_timer=40}] movement disabled
+inputpermission set @a[tag=teleportBetaHubHalloween,scores={teleport_timer=15}] movement enabled
+gamemode a @a[tag=teleportBetaHubHalloween,scores={teleport_timer=30}]
+tp @a[tag=teleportBetaHubHalloween,scores={teleport_timer=30}] 2099 -55 2099 facing 2100 -55 2099
+tag @a[tag=teleportBetaHubHalloween,scores={teleport_timer=1}] remove teleportBetaHubHalloween
 scoreboard players set @a teleport_spawn 1
 scoreboard players set @a[tag=teleportParkour,scores={teleport_timer=0}] teleport_timer 80
 camera @a[tag=teleportParkour,scores={teleport_timer=80}] fade time 0.2 3 0.2
@@ -56,8 +67,8 @@ inputpermission set @a[tag=teleportParkour1Checkpoint,scores={teleport_timer=40}
 inputpermission set @a[tag=teleportParkour1Checkpoint,scores={teleport_timer=15}] movement enabled
 tag @a[tag=teleportParkour1Checkpoint,scores={teleport_timer=70}] add teleportParkour1CheckpointNow
 tag @a[tag=teleportParkour1Checkpoint,scores={teleport_timer=1}] remove teleportParkour1Checkpoint
-tp @a[tag=teleportParkour1CheckpointNow,scores={parkour_checkpoints=0}] 1051 55 1003 facing 1051 55 1004
-tag @a[tag=teleportParkour1CheckpointNow,scores={parkour_checkpoints=0}] remove teleportParkour1CheckpointNow
+tp @a[tag=teleportParkour1CheckpointNow,scores={parkour_checkpoints_1=0}] 1051 55 1003 facing 1051 55 1004
+tag @a[tag=teleportParkour1CheckpointNow,scores={parkour_checkpoints_1=0}] remove teleportParkour1CheckpointNow
 tag @a[scores={parkour_checkpoints_2=2..}] add aboveParkour2Checkpoint0
 tag @a[scores={parkour_checkpoints_2=..1}] remove aboveParkour2Checkpoint0
 scoreboard players set @a[tag=teleportParkour2Checkpoint,scores={teleport_timer=0}] teleport_timer 80
@@ -66,5 +77,5 @@ inputpermission set @a[tag=teleportParkour2Checkpoint,scores={teleport_timer=40}
 inputpermission set @a[tag=teleportParkour2Checkpoint,scores={teleport_timer=15}] movement enabled
 tag @a[tag=teleportParkour2Checkpoint,scores={teleport_timer=70}] add teleportParkour2CheckpointNow
 tag @a[tag=teleportParkour2Checkpoint,scores={teleport_timer=1}] remove teleportParkour2Checkpoint
-tp @a[tag=teleportParkour2CheckpointNow,scores={parkour_checkpoints=0}] 1005 -61 2025 facing 1006 -61 2025
-tag @a[tag=teleportParkour2CheckpointNow,scores={parkour_checkpoints=0}] remove teleportParkour2CheckpointNow
+tp @a[tag=teleportParkour2CheckpointNow,scores={parkour_checkpoints_2=0}] 1005 -61 2025 facing 1006 -61 2025
+tag @a[tag=teleportParkour2CheckpointNow,scores={parkour_checkpoints_2=0}] remove teleportParkour2CheckpointNow

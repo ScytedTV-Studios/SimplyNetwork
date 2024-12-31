@@ -1,1 +1,1 @@
-{"format_version":"1.16.100","minecraft:fog_settings":{"description":{"identifier":"hive:mobius"},"distance":{"air":{"fog_start":64,"fog_end":112,"fog_color":"#FFFF55","render_distance_type":"fixed"}}}}
+{"format_version":"1.16.100","minecraft:fog_settings":{"description":{"identifier":"simplynetwork:halloween"},"distance":{"air":{"fog_start":64,"fog_end":112,"fog_color":"#AA00AA","render_distance_type":"fixed"}}}}

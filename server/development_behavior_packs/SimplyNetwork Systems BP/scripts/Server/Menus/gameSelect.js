@@ -28,10 +28,11 @@ function parkourForm(Player) {
     }
 
     form.button("§eSpiral 1", "textures/forms/parkour/1.png");
+    form.button("§eSpiral 2 §l§6[NEW]§r", "textures/forms/parkour/2.png");
 
-    if (loyd) {
-        form.button("§eSpiral 2 §l§6[NEW]§r", "textures/forms/parkour/2.png");
-    }
+    // if (loyd) {
+    //     form.button("§eSpiral 2 §l§6[NEW]§r", "textures/forms/parkour/2.png");
+    // }
 
     form.show(Player).then((response) => {
         if (hasRoleTag && response.selection === 0) {

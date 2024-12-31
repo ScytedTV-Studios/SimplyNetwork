@@ -9,7 +9,7 @@ effect @a[tag=inGameHub] fire_resistance 1 255 true
 
 spawnpoint @a[tag=inGameHub] 0 0 0
 
-tag @a[x=-101,y=-5,z=-101,dx=202,dy=202,dz=202,tag=!inGameHub] add switchInventory0
+tag @a[x=-101,y=-5,z=-101,dx=202,dy=202,dz=202,tag=!inGameHub,m=!c] add switchInventory0
 
 # fog @a[tag=inGameHub] push simplynetwork:hub hub
 # fog @a[tag=!inGameHub] remove hub
@@ -21,8 +21,8 @@ tag @a[scores={inventorySlot=!1}] remove inGameParkour
 effect @a[tag=inGameParkour] resistance 1 255 true
 effect @a[tag=inGameParkour] fire_resistance 1 255 true
 
-tag @a[x=1000,y=54,z=1003,dx=104,dy=178,dz=104,tag=!inGameParkour] add switchInventory1
-tag @a[x=1000,y=-64,z=2000,dx=104,dy=300,dz=104,tag=!inGameParkour] add switchInventory1
+tag @a[x=1000,y=54,z=1003,dx=104,dy=178,dz=104,tag=!inGameParkour,m=!c] add switchInventory1
+tag @a[x=1000,y=-64,z=2000,dx=104,dy=300,dz=104,tag=!inGameParkour,m=!c] add switchInventory1
 
 tag @a[dx=104,dy=178,dz=104,x=1000,y=54,z=1003] add inGameParkour1
 tag @a[dx=104,dy=300,dz=104,x=1000,y=-64,z=2000] add inGameParkour2

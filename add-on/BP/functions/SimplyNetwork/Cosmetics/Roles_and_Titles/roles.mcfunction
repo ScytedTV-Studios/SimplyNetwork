@@ -78,3 +78,8 @@ tag @a[tag=displayRoleStreamer] remove displayRoleMember
 tag @a[tag=displayRolePlus] remove displayRoleMember
 tag @a[tag=displayRoleTester] remove displayRoleMember
 tag @a[tag=displayRoleVIP] remove displayRoleMember
+
+#Give creatorTools tag if user has a staff role.
+execute as @a[tag=!hasRoleDeveloper] as @s[tag=!hasRoleHelper] run tag @s remove creatorTools
+tag @a[tag=hasRoleDeveloper] add creatorTools
+tag @a[tag=hasRoleHelper] add creatorTools

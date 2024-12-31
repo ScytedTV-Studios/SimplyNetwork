@@ -14,5 +14,10 @@ export const titleTags = {
     displayTitle12: "§bThe Runner",
     displayTitle13: "§uBeta Tester",
     displayTitle14: "§dBug Squasher",
-    displayTitle15: "§cRound §qAnd §uRound"
+    displayTitle15: "§cRound §qAnd §uRound",
+    displayTitle16: "§6Berry Fun",
+    displayTitle17: "§l§fC§cH§fR§cI§fS§cT§fM§cA§fS §c2§f0§c2§f4",
+    displayTitle18: "§l§6N§fE§6W §fY§6E§fA§6R§fS §62§f0§62§f5",
+    displayTitle19: "§gAlternative Route",
+    displayTitle20: "§7Retired Unc"
 };

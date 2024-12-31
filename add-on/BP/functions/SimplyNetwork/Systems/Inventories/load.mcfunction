@@ -18,3 +18,25 @@ scoreboard players set @a[tag=switchInventory2] inventorySlot 2
 clear @a[tag=switchInventory2]
 tag @a[scores={inventorySlot=2},tag=switchInventory2] add "inventoryLoad|2"
 tag @a[tag=switchInventory2] remove switchInventory2
+
+#Inventory 1000
+scoreboard players set @a[tag=switchInventory1000] inventorySlot 1000
+clear @a[tag=switchInventory1000]
+tag @a[scores={inventorySlot=1000},tag=switchInventory1000] add "inventoryLoad|1000"
+title @a[scores={inventorySlot=1000},tag=switchInventory1000] clear
+execute as @a[scores={inventorySlot=1000},tag=switchInventory1000] run replaceitem entity @s slot.hotbar 8 simplynetwork:creator_tools 1 1 {"item_lock":{"mode":"lock_in_inventory"}}
+tag @a[tag=switchInventory1000] remove switchInventory1000
+
+scoreboard objectives add gamemode dummy
+scoreboard players add @a gamemode 0
+
+#Survival
+scoreboard players set @a[m=0] gamemode 0
+#Creative
+scoreboard players set @a[m=1] gamemode 1
+#Adventure
+scoreboard players set @a[m=2] gamemode 2
+#Spectator
+scoreboard players set @a[m=spectator] gamemode 3
+
+tag @a[m=1,scores={inventorySlot=!1000}] add "switchInventory1000"

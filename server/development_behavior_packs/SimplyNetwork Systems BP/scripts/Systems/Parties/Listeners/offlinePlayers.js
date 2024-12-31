@@ -84,6 +84,9 @@ world.beforeEvents.playerLeave.subscribe((eventData) => {
                 player.runCommandAsync(
                     `tellraw @s {"rawtext":[{"text":"§e${leavingPlayer.name} §cleft the party. §e${newLeader.name} §ais now the party owner."}]}`
                 ).catch((error) => console.error("Error sending party leader change message:", error));
+                player.runCommandAsync(
+                    `tag "${newLeader.name}" add partyleader`
+                ).catch((error) => console.error("Error giving the new party leader the partyleader tag:", error));
             });
         } else {
             // If no one is left in the party, notify that the party has been disbanded

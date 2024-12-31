@@ -41,26 +41,30 @@ import './Games/Parkour/restartItem';
 import './Games/Parkour/reset';
 
 //Prisons
-// import './Games/Prisons/index.ts';
-// import './Games/Prisons/mine.ts';
-// import './Games/Prisons/ui.ts';
-// import './Games/Prisons/utils.ts';
+import './Games/Prisons/mining';
 
 ////////////
 // SERVER //
 ////////////
 
+import './Server/LockedChests/index';
+import './Server/LockedChests/utils/forms';
+import './Server/LockedChests/utils/utils';
+
 // import './Server/maintenance';
 import './Server/teleportHub';
 import './Server/teleportHubItem';
 
+import './Server/Entities/floatingText';
 import './Server/Entities/npcParkour';
 
 import './Server/Menus/comingSoon';
+import './Server/Menus/creatorTools';
 import './Server/Menus/gameSelect';
 import './Server/Menus/leaderboards';
 
 import './Server/Net/discord'
+import './Server/Net/onlinePlayers'
 import './Server/Net/saveScoreboards'
 import './Server/Net/saveTags'
 

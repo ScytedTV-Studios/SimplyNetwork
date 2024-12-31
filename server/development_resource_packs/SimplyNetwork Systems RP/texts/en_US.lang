@@ -37,3 +37,4 @@ item.spawn_egg.entity.simplynetwork:parkour_finish.name=Spawn parkour_finish
 entity.simplynetwork:parkour_finish.name=parkour_finish
 item.spawn_egg.entity.simplynetwork:parkour_start.name=Spawn parkour_start
 entity.simplynetwork:parkour_start.name=parkour_start
+item.SimplyNetwork:creator_tools=§l§eCreator Tools

@@ -28,6 +28,9 @@
 		},
 		"SimplyNetwork_back_to_hub": {
 			"textures": "textures/items/back_to_hub"
+		},
+		"SimplyNetwork_creator_tools": {
+			"textures": "textures/items/creator_tools"
 		}
 	}
 }

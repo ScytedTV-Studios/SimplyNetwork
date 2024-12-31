@@ -32,9 +32,6 @@ tag @a[scores={parkour_level=..6}] remove hasTitle8
 tag @a[scores={parkour_level=10..}] add hasTitle9
 tag @a[scores={parkour_level=..9}] remove hasTitle9
 
-#Parkour Other
-tag @a[tag=parkourReset] remove hasTitle10
-
 #Hub Cave
 execute as @a[x=36,y=15,z=-31,dx=2,dy=2,dz=0] at @s run tellraw @s[tag=!hasTitle11] {"rawtext":[{"text":"§dYou now have the §nCave Dweller §dtitle."}]}
 execute as @a[x=36,y=15,z=-31,dx=2,dy=2,dz=0] at @s run playsound random.toast @s[tag=!hasTitle11] 37 16 -33
@@ -52,3 +49,25 @@ tag @a[scores={level=..0}] remove hasTitle13
 #Finished Parkour Spiral 1
 tag @a[tag=hasRestartParkour1] add hasTitle15
 tag @a[tag=!hasRestartParkour1] remove hasTitle15
+
+#Finishing Parkour Spiral 1 10 Times
+# tag @a[scores={parkour_restart_1=10..}] add hasTitle
+
+#Spiral 1 Glowberry Area
+execute as @a[x=1100,y=126,z=1060,dy=0] at @s run tellraw @s[tag=!hasTitle16] {"rawtext":[{"text":"§dYou now have the §6Berry Fun §dtitle."}]}
+execute as @a[x=1100,y=126,z=1060,dy=0] at @s run playsound random.toast @s[tag=!hasTitle16] 1100 126 1060
+execute as @a[x=1100,y=126,z=1060,dy=0] at @s run tag @s[tag=!hasTitle16] add hasTitle16
+
+execute as @a[x=1095,y=126,z=1062,dy=0] at @s run tellraw @s[tag=!hasTitle16] {"rawtext":[{"text":"§dYou now have the §6Berry Fun §dtitle."}]}
+execute as @a[x=1095,y=126,z=1062,dy=0] at @s run playsound random.toast @s[tag=!hasTitle16] 1100 126 1060
+execute as @a[x=1095,y=126,z=1062,dy=0] at @s run tag @s[tag=!hasTitle16] add hasTitle16
+
+#Christmas 2024
+# tag @a add hasTitle17
+
+#New Years 2025
+tag @a add hasTitle18
+
+execute as @a[x=1033,y=114,z=2022,dy=3] at @s run tellraw @s[tag=!hasTitle19] {"rawtext":[{"text":"§dYou now have the §gAlternative Route §dtitle."}]}
+execute as @a[x=1033,y=114,z=2022,dy=3] at @s run playsound random.toast @s[tag=!hasTitle19] 1033 115 2024
+execute as @a[x=1033,y=114,z=2022,dy=3] at @s run tag @s[tag=!hasTitle19] add hasTitle19

@@ -17,11 +17,11 @@ async function fetchTagsFromServer() {
             return JSON.parse(response.body); // Return existing tags data
         } else {
             console.warn(`Failed to fetch existing tags: Status ${response.status}`);
-            return {}; // Return empty object if there's an issue
+            return null; // Return null if there's an issue
         }
     } catch (error) {
         console.error(`Error fetching tags: ${error}`);
-        return {}; // Return empty object if an error occurs
+        return null; // Return null if an error occurs
     }
 }
 
@@ -29,6 +29,12 @@ async function fetchTagsFromServer() {
 async function storePlayerTags() {
     // Fetch the existing tags from the server
     const existingTags = await fetchTagsFromServer();
+
+    // If fetching failed, cancel the update
+    if (!existingTags) {
+        console.error("Fetching existing tags failed. Cancelling the update.");
+        return;
+    }
 
     // Ensure existingTags is an object
     if (typeof existingTags !== "object" || existingTags === null) {
